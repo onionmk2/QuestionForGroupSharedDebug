@@ -1,0 +1,24 @@
+﻿#pragma kernel CSMain
+#pragma enable_d3d11_debug_symbols
+
+groupshared uint groupShared[16];
+RWStructuredBuffer<int> result;
+
+[numthreads(8, 8, 1)]
+void CSMain(uint groupIndex : SV_GroupIndex, uint3 groupThreadID : SV_GroupThreadId)
+{
+    groupShared[groupIndex] = 1;
+    GroupMemoryBarrierWithGroupSync();
+
+
+    // do something by "groupshared uint groupShared[16]". 
+    // Otherwise, "groupshared uint groupShared[16]" seems to be removed after compile.
+    if (groupIndex > 1 && groupIndex % 2 == 0)
+    {
+        groupShared[groupIndex - 1] = groupShared[groupIndex] + 1;
+    }
+
+
+    GroupMemoryBarrierWithGroupSync();    
+    result[groupThreadID.x] = groupShared[groupIndex];
+}
