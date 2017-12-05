@@ -206,7 +206,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536785737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d803d56842c3034da99b78212b8b9da, type: 3}
+  m_Script: {fileID: 11500000, guid: d51f9411be1e8ba458e5a77d362538c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shader: {fileID: 7200000, guid: 6093c4e5d570adb458b3741b344664b8, type: 3}
+  shader: {fileID: 0}
